@@ -16,14 +16,13 @@ export class MvHeader extends LitElement {
       :host {
         font-family: var(--font-family, Arial);
         font-size: var(--font-size-m, 10pt);
-      }
-
-      header {
         --margin-left: var(--mv-header-margin-left, 0);
         --margin-right: var(--mv-header-margin-right, 0);
         --total-margins: calc(var(--margin-left) + var(--margin-right));
-        --padding-left: 10px;
-        --padding-right: 10px;
+        --item-padding: var(--mv-header-item-padding: 10px); 
+      }
+
+      header {               
         min-height: var(--mv-header-height, 66px);
         max-height: var(--mv-header-height, 66px);
         background: var(--mv-header-background, #373E48);
@@ -33,9 +32,12 @@ export class MvHeader extends LitElement {
         margin-bottom: var(--mv-header-margin-bottom, 20px);
         margin-left: var(--margin-left);
         margin-right: var(--margin-right);
-        padding-left: var(--padding-left);
-        padding-right: var(--padding-right);
+        padding-left: var(--item-padding);
+        padding-right: var(--item-padding);
         width: calc(100% - var(--total-margins));
+        box-shadow: 0 2px 15px 0 rgba(0,0,0,0.2);
+        transition: margin-left 0.3s;
+        transition: margin-right 0.3s;
       }
 
       section {
@@ -57,7 +59,7 @@ export class MvHeader extends LitElement {
       }
 
       section ::slotted(*) {
-        margin: auto 10px;
+        margin: auto var(--item-padding, 10px);
       }
 
       .mv-header-item,
@@ -92,7 +94,7 @@ export class MvHeader extends LitElement {
       return html`
       <header>
       ${this.custom
-        ? html`<slot name="custom"></slot>`
+        ? html`<slot></slot>`
         : html`
             <section class="left">
               <slot name="left"></slot>
