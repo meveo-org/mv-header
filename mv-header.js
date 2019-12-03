@@ -16,26 +16,31 @@ export class MvHeader extends LitElement {
       :host {
         font-family: var(--font-family, Arial);
         font-size: var(--font-size-m, 10pt);
+        --background: var(--mv-header-background, #373E48);
+        --height: var(--mv-header-height, 66px);
+        --shadow: var(--mv-header-shadow, 0 2px 15px 0 rgba(0,0,0,0.2));
         --margin-left: var(--mv-header-margin-left, 0);
         --margin-right: var(--mv-header-margin-right, 0);
+        --margin-bottom: var(--mv-header-margin-bottom, 1px);
         --total-margins: calc(var(--margin-left) + var(--margin-right));
         --item-padding: var(--mv-header-item-padding: 10px); 
+        --item-color: var(--mv-header-item-color, #B0B3B6);
       }
 
       header {               
-        min-height: var(--mv-header-height, 66px);
-        max-height: var(--mv-header-height, 66px);
-        background: var(--mv-header-background, #373E48);
+        min-height: var(--height);
+        max-height: var(--height);
+        background: var(--background);
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         margin-top: 0;
-        margin-bottom: var(--mv-header-margin-bottom, 20px);
+        margin-bottom: var(--margin-bottom);
         margin-left: var(--margin-left);
         margin-right: var(--margin-right);
         padding-left: var(--item-padding);
         padding-right: var(--item-padding);
         width: calc(100% - var(--total-margins));
-        box-shadow: 0 2px 15px 0 rgba(0,0,0,0.2);
+        box-shadow: var(--shadow);
         transition: margin-left 0.3s;
         transition: margin-right 0.3s;
       }
@@ -66,7 +71,7 @@ export class MvHeader extends LitElement {
       .mv-header-item ::slotted(*) {
         margin: 0;
         text-decoration: none;
-        color: #B0B3B6;
+        color: var(--item-color);
       }
       
       .mv-header-item:hover ::slotted(a) {

@@ -15,7 +15,7 @@ export class MvHeaderDemo extends LitElement {
       :host {
         font-family: var(--font-family, Arial);
         font-size: var(--font-size-m, 10pt);
-        --mv-header-margin-bottom: 10px;
+        --mv-header-margin-bottom: 1px;
         --header-height: calc(66px + var(--mv-header-margin-bottom));
       }
 
@@ -27,9 +27,9 @@ export class MvHeaderDemo extends LitElement {
       }
 
       .content {
-        padding: 0 30px;
+        padding: 0 200px;
         overflow-y: auto;
-        height: calc(100% - var(--header-height, 0));
+        height: calc(100% - var(--header-height));
       }
 
       .styled {
