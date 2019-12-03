@@ -93,7 +93,7 @@ export class MvHeader extends LitElement {
       return html`
         <div class="mv-header-item">
           <slot></slot>
-        </div
+        </div>
       `;
     } else {
       return html`
