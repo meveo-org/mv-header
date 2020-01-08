@@ -3,7 +3,7 @@ import "mv-button";
 import "mv-font-awesome";
 import "./mv-header.js";
 
-export class MvContainedDemo extends LitElement {
+export class ContainedHeaderDemo extends LitElement {
   static get properties() {
     return {
       value: { type: String, attribute: true }
@@ -72,4 +72,4 @@ export class MvContainedDemo extends LitElement {
   }
 }
 
-customElements.define("mv-contained-demo", MvContainedDemo);
+customElements.define("contained-header-demo", ContainedHeaderDemo);
