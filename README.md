@@ -1,6 +1,6 @@
 # mv-header
 
- MvHeader is a Meveo component (based on lit-element) that renders a header component that can be used with [mv-main](https://github.com/meveo-frontend/mv-main).
+ MvHeader is a Meveo component (based on lit-element) that renders a header component that can be used with [mv-main](https://github.com/meveo-front/mv-main).
 
 ## Features
 * Configurable item positions: `left`, `right`, `center`, default: `left`
@@ -30,4 +30,4 @@ To experiment with the MvHeader component.
 </mv-header>
 ```
 
-You can also check this [demo](https://manaty.net/mv-header/)
+You can also check this [demo](https://header.meveo.org/)
