@@ -7,7 +7,11 @@ export class MvHeader extends LitElement {
       // "custom" is only applicable in root node, e.g. <mv-header custom>{...mv-header items}</mv-header>
       custom: { type: Boolean, attribute: true },
       // valid positions are: "left", "center", "right", default: "left"
-      position: { type: String, attribute: true }
+      position: { type: String, attribute: true },
+
+      //  valid theme values are: "light", "dark"
+      //    default: "dark"
+      theme: { type: String, attribute: true }
     };
   }
 
@@ -16,15 +20,17 @@ export class MvHeader extends LitElement {
       :host {
         font-family: var(--font-family, Arial);
         font-size: var(--font-size-m, 10pt);
-        --background: var(--mv-header-background, #373E48);
         --height: var(--mv-header-height, 66px);
         --shadow: var(--mv-header-shadow, 0 2px 15px 0 rgba(0,0,0,0.2));
         --margin-left: var(--mv-header-margin-left, 0);
         --margin-right: var(--mv-header-margin-right, 0);
         --margin-bottom: var(--mv-header-margin-bottom, 1px);
         --total-margins: calc(var(--margin-left) + var(--margin-right));
-        --item-padding: var(--mv-header-item-padding: 10px); 
-        --item-color: var(--mv-header-item-color, #B0B3B6);
+        --item-padding: var(--mv-header-item-padding: 10px);
+        --light-background: var(--mv-header-light-background, #F3F3F3);
+        --item-light-color: var(--mv-header-item-light-color, #B0B3B6);
+        --dark-background: var(--mv-header-dark-background, #373E48);
+        --item-dark-color: var(--mv-header-item-light-color, #B0B3B6);
       }
 
       header {               
@@ -77,6 +83,16 @@ export class MvHeader extends LitElement {
       .mv-header-item:hover ::slotted(a) {
         text-decoration: underline;
       }
+      
+      .light {
+        --background: var(--light-background);
+        --item-color: var(--item-light-color);
+      }
+      
+      .dark {
+        --background: var(--dark-background);
+        --item-color: var(--item-dark-color);
+      }
     `;
   }
 
@@ -85,6 +101,7 @@ export class MvHeader extends LitElement {
     this.item = false;
     this.custom = false;
     this.position = "left";
+    this.theme = "dark";
   }
 
   render() {
@@ -97,7 +114,7 @@ export class MvHeader extends LitElement {
       `;
     } else {
       return html`
-      <header>
+      <header class="${this.theme}">
       ${this.custom
         ? html`<slot></slot>`
         : html`

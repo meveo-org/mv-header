@@ -6,7 +6,8 @@ import "./mv-header.js";
 export class ContainedHeaderDemo extends LitElement {
   static get properties() {
     return {
-      value: { type: String, attribute: true }
+      value: { type: String, attribute: true },
+      theme: { type: String, attribute: true }
     };
   }
 
@@ -47,10 +48,15 @@ export class ContainedHeaderDemo extends LitElement {
     `;
   }
 
+  constructor() {
+    super();
+    this.theme = "dark";
+  }
+
   render() {
     return html`
       <div class="container">
-        <mv-header>
+        <mv-header .theme="${this.theme}">
           <mv-header item><a href="#">Breadcrumb</a> > path</mv-header>
           <mv-header item><div class="styled">Styled Text</div></mv-header>
           <mv-header item position="center"><h1>MvHeader</h1></mv-header>
