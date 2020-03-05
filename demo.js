@@ -74,8 +74,9 @@ export class MvHeaderDemo extends LitElement {
   }
 
   render() {
+    const { theme } = this;
     return html`
-    <mv-header .theme="${this.theme}">
+    <mv-header .theme="${theme}">
       <mv-header item><a href="#">Breadcrumb</a> > path</mv-header>
       <mv-header item><div class="styled">Styled Text</div></mv-header>
       <mv-header item position="center"><h1>MvHeader</h1></mv-header>
@@ -87,11 +88,11 @@ export class MvHeaderDemo extends LitElement {
     </mv-header>
     <fieldset>
       <legend>Theme</legend>
-      <label><input type="radio" name="theme" value="light" @change="${this.radioChange}" />Light</label>
-      <label><input type="radio" name="theme" value="dark" checked @change="${this.radioChange}" />Dark</label>
+      <label><input type="radio" name="theme" value="light" @change="${this.changeTheme}" />Light</label>
+      <label><input type="radio" name="theme" value="dark" checked @change="${this.changeTheme}" />Dark</label>
     </fieldset> 
     <div class="content">  
-      <contained-header-demo .theme="${this.theme}"></contained-header-demo>     
+      <contained-header-demo .theme="${theme}"></contained-header-demo>     
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Urna nec tincidunt praesent semper feugiat nibh. Phasellus vestibulum lorem sed risus. In nisl nisi scelerisque eu ultrices vitae. Dolor magna eget est lorem ipsum dolor sit amet. Ligula ullamcorper malesuada proin libero. Lorem ipsum dolor sit amet consectetur. Enim nec dui nunc mattis. Tellus at urna condimentum mattis pellentesque. Pretium lectus quam id leo in vitae turpis. Consectetur adipiscing elit duis tristique sollicitudin. Neque volutpat ac tincidunt vitae semper quis. Proin libero nunc consequat interdum varius sit. Eros donec ac odio tempor orci dapibus ultrices in iaculis. Et egestas quis ipsum suspendisse ultrices. Posuere lorem ipsum dolor sit amet. Massa placerat duis ultricies lacus sed turpis tincidunt id aliquet. In aliquam sem fringilla ut morbi. Montes nascetur ridiculus mus mauris vitae ultricies leo.</p>
       <p>Sed odio morbi quis commodo odio aenean sed. Ultrices neque ornare aenean euismod elementum nisi quis eleifend. Quis eleifend quam adipiscing vitae proin sagittis nisl. Vitae auctor eu augue ut lectus arcu bibendum. Et malesuada fames ac turpis egestas. Vel orci porta non pulvinar neque. Eget est lorem ipsum dolor sit amet consectetur adipiscing. Vulputate mi sit amet mauris. Duis convallis convallis tellus id interdum velit laoreet. Consequat ac felis donec et odio pellentesque diam.</p>
       <p>Pellentesque nec nam aliquam sem et tortor consequat id porta. Tellus mauris a diam maecenas sed. Tristique risus nec feugiat in fermentum posuere urna. Amet est placerat in egestas erat imperdiet sed. Netus et malesuada fames ac turpis egestas integer eget. In fermentum posuere urna nec tincidunt praesent semper feugiat nibh. Arcu bibendum at varius vel pharetra vel turpis nunc. Pharetra massa massa ultricies mi quis hendrerit dolor. Egestas dui id ornare arcu odio ut sem nulla. Consectetur adipiscing elit pellentesque habitant morbi. Gravida in fermentum et sollicitudin ac. In nibh mauris cursus mattis molestie a iaculis at erat.</p>
@@ -101,13 +102,9 @@ export class MvHeaderDemo extends LitElement {
     `;
   }
 
-  radioChange = originalEvent => {
+  changeTheme = originalEvent => {
     const { target: { value } } = originalEvent;
-    if (value === "light") {
-      this.theme = "light";
-    } else {
-      this.theme = "dark";
-    }
+    this.theme = value;
   };
 }
 
